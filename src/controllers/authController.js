@@ -1,5 +1,8 @@
-import db from "../db";
+import db from "../db.js";
 import bcrypt from 'bcrypt';
+import { v4 as uuid } from 'uuid';
+
+const token = uuid();
 
 const makeSignUp = async () => {
   // nome, email, senha, confirmação de senha
@@ -15,4 +18,16 @@ const makeSignUp = async () => {
   }
 }
 
-export default makeSignUp;
+// const makeLogin = async () => {
+//   try {
+
+//   } catch (e) {
+//     console.log(e);
+//     res.sendStatus(500);
+//   }
+// }
+
+export {
+  makeSignUp,
+  makeLogin
+}
