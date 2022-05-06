@@ -4,9 +4,10 @@ import { v4 as uuid } from 'uuid';
 
 const token = uuid();
 
-const makeSignUp = async () => {
+const makeSignUp = async (req,res) => {
   // nome, email, senha, confirmação de senha
   const user = req.body;
+  
   const passwordHash = bcrypt.hashSync(user.password, 10);
 
   try {
@@ -27,6 +28,4 @@ const makeSignUp = async () => {
 //   }
 // }
 
-export {
-  makeSignUp
-}
+export default makeSignUp;

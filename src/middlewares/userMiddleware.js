@@ -1,6 +1,7 @@
 import  userSchema  from '../schema/userSchema.js';
+
 const userMiddleware = async (req,res,next) => {
-  const {user} = req.headers;
+  const { user } = req.headers;
 
   const validation = userSchema.validate(user, { abortEarly: true });
   if (validation.error) {
