@@ -1,7 +1,6 @@
 import express, {json} from 'express';
 import cors from 'cors';
 import chalk from 'chalk';
-import joi from 'joi';
 
 import { signUpRouter } from './routes/signUpRouter.js';
 
