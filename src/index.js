@@ -2,7 +2,7 @@ import express, {json} from 'express';
 import cors from 'cors';
 import chalk from 'chalk';
 
-import { signUpRouter } from './routes/signUpRouter.js';
+import  signUpRouter from './routes/signUpRouter.js';
 
 const server = express();
 server.use(json());

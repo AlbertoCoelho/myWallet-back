@@ -28,6 +28,5 @@ const makeSignUp = async () => {
 // }
 
 export {
-  makeSignUp,
-  makeLogin
+  makeSignUp
 }

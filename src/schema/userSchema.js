@@ -17,13 +17,6 @@ const userSchema = joi.object({
 
   passwordConfirmation: joi.string()
   .valid(joi.ref('password'))
-  .options({
-    language: {
-      any: {
-        allowOnly: '!!Passwords do not match',
-      }
-    } 
-  })
   .required()
 });
 

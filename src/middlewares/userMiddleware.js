@@ -1,5 +1,4 @@
-import userSchema from '../schema/userSchema';
-
+import  userSchema  from '../schema/userSchema.js';
 const userMiddleware = async (req,res,next) => {
   const {user} = req.headers;
 
