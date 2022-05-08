@@ -1,9 +1,10 @@
 import { Router } from 'express';
-import  makeSignUp from '../controllers/userController.js';
+import  modulesUserController from '../controllers/userController.js';
 import  userMiddleware from '../middlewares/userMiddleware.js';
 
 const signUpRouter = Router();
 
-signUpRouter.post('/sign-up', userMiddleware, makeSignUp);
+signUpRouter.post('/sign-up', userMiddleware, modulesUserController.makeSignUp);
+signUpRouter.get('/sign-up', modulesUserController.getUsers);
 
 export default signUpRouter;
