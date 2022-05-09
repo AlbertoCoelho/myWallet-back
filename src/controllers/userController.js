@@ -7,10 +7,12 @@ const token = uuid();
 const makeSignUp = async (req,res) => {
   const user = req.body;
   
-  const passwordHash = bcrypt.hashSync(user.password, 10);
+  const SALT = 10;
+  const passwordHash = bcrypt.hashSync(user.password, SALT);
+  delete user.passwordConfirmation;
 
   try {
-    await db.collection('users').insertOne({ ...user, password: passwordHash, passwordConfirmation: passwordHash }); 
+    await db.collection('users').insertOne({ ...user, password: passwordHash }); 
     res.sendStatus(201);
   } catch (e) {
     console.log(e);
@@ -20,23 +22,14 @@ const makeSignUp = async (req,res) => {
 
 const getUsers = async (req,res) => {
   try {
-    const participantsCollection = db.collection("users");
-    const participants = await participantsCollection.find().toArray();
-    res.send(participants);
+    const usersCollection = db.collection("users");
+    const users = await usersCollection.find().toArray();
+    res.send(users);
   } catch(e) {
       console.log(e);
       res.sendStatus(500);
   }
 }
-
-// const makeLogin = async () => {
-//   try {
-
-//   } catch (e) {
-//     console.log(e);
-//     res.sendStatus(500);
-//   }
-// }
 
 const modulesUserController = {makeSignUp,  getUsers };
 export default modulesUserController;
