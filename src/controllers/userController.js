@@ -28,5 +28,5 @@ const getUsers = async (req,res) => {
   }
 }
 
-const modulesUserController = {makeSignUp,  getUsers };
+const modulesUserController = { makeSignUp,getUsers };
 export default modulesUserController;
