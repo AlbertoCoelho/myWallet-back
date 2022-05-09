@@ -7,11 +7,20 @@ const makeLogin = async (req,res) => {
   const { email,password } = req.body;
 
   try {
-    res.sendStatus(200);
+    const user = await db.collection("users").findOne({ email });
+    if(!user) return res.sendStatus(401);
+    if(user && bcrypt.compareSync(password, user.password)) {
+      const token = uuid();
+      await db.collection("sessions").insertOne({token, userId: user._id});
+      res.send(token);
+      return;
+    } 
 
-  } catch (e) {
-    console.log(e);
-    res.sendStatus(500);
+    res.sendStatus(401); // Unauthorized
+
+  } catch (err) {
+    console.log("Error logging in user.", err);
+    res.status(500).send("Error logging in user.");
   }
 }
 

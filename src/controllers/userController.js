@@ -1,8 +1,5 @@
 import db from "../db.js";
 import bcrypt from 'bcrypt';
-import { v4 as uuid } from 'uuid';
-
-const token = uuid();
 
 const makeSignUp = async (req,res) => {
   const user = req.body;
